@@ -2,7 +2,7 @@
 
 <div align='center'>
     <h1>Desafio 02 - Trabalhando com middlewares</h1>
-    <p>Esse é o segundo desafio da trilha de NodeJS do bootcamp da rocketseat. </p>
+    <p>Esse é o segundo desafio da trilha de NodeJS do bootcamp Ignite da rocketseat. </p>
     <p>
         Essa é uma aplicação para gerenciar tarefas (em inglês _todos_). 
         Será permitida a criação de um usuário com `name` e `username`, bem como fazer o CRUD de *todos*:
