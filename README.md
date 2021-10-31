@@ -1,12 +1,8 @@
-## 💻 Sobre o projeto
+## 💻 Sobre o desafio
 
 <div align='center'>
     <h1>Desafio 02 - Trabalhando com middlewares</h1>
-    <p>Esse é o segundo desafio da trilha de NodeJS do bootcamp Ignite da rocketseat. </p>
-    <p>
-        Essa é uma aplicação para gerenciar tarefas (em inglês _todos_). 
-        Será permitida a criação de um usuário com `name` e `username`, bem como fazer o CRUD de *todos*:
-    </p>
+    <p>Esse é o segundo desafio da trilha de NodeJS do bootcamp Ignite da Rocketseat, nele vamos colocar os conhecimentos sobre middlewares.</p>
 </div>
 
 ### 🧪 Tecnologias
@@ -15,16 +11,35 @@
 - Express (https://expressjs.com/)
 - Uuidv4 (https://www.npmjs.com/package/uuidv4)
 
-### 🛠 Features
+### 🛠 Testes
 
-- Criar um novo _todo_;
-- Listar todos os _todos_;
-- Alterar o `title` e `deadline` de um _todo_ existente;
-- Marcar um _todo_ como feito;
-- Excluir um _todo_;
+- **Should be able to put user and todo in request when both exits**
 
+  Para que esse teste passe, o middleware **checksTodoExists** deve receber o `username` de dentro do header e o `id` de um _todo_ de dentro de `request.params`. Você deve validar que o usuário exista, validar que o `id` seja um uuid e também validar que esse `id` pertence a um _todo_ do usuário informado.
 
+  Com todas as validações passando, o _todo_ encontrado deve ser passado para o `request` assim como o usuário encontrado também e a função next deve ser chamada.
 
+  É importante que você coloque dentro de `request.user` o usuário encontrado e dentro de `request.todo` o _todo_ encontrado.
+
+- **Should not be able to put user and todo in request when user does not exists**
+
+  Para que esse teste passe, no middleware **checksTodoExists** você deve retornar uma resposta com status `404` caso não exista um usuário com o `username` passado pelo header da requisição.
+
+- **Should not be able to put user and todo in request when todo id is not uuid**
+
+  Para que esse teste passe, no middleware **checksTodoExists** você deve retornar uma resposta com status `400` caso o `id` do _todo_ passado pelos parâmetros da requisição não seja um UUID válido (por exemplo `1234abcd`).
+
+  - **Should not be able to put user and todo in request when todo does not exists**
+
+  Para que esse teste passe, no middleware **checksTodoExists** você deve retornar uma resposta com status `404` caso o `id` do _todo_ passado pelos parâmetros da requisição não pertença a nenhum _todo_ do usuário encontrado.
+
+  - **Should be able to find user by id route param and pass it to request.user**
+
+  Para que esse teste passe, o middleware **findUserById** deve receber o `id` de um usuário de dentro do `request.params`. Você deve validar que o usuário exista, repassar ele para `request.user` e retornar a chamada da função next.
+
+  - **Should not be able to pass user to request.user when it does not exists**
+
+  Para que esse teste passe, no middleware **findUserById** você deve retornar uma resposta com status `404` caso o `id` do usuário \*\*passado pelos parâmetros da requisição não pertença a nenhum usuário cadastrado.
 
 ### 🚀 Meus Contatos
 
